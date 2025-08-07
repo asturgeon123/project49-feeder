@@ -1,0 +1,16 @@
+version: "3"
+services:
+  project49-feeder-prod:
+    image: ghcr.io/asturgeon123/project49-feeder:main
+    environment:
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
+      - POLLING_INTERVAL_SECONDS=15
+
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /root/.docker/config.json:/config.json
+    command: --interval 300

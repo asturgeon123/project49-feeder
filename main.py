@@ -153,8 +153,8 @@ def main():
     logging.info("Starting aircraft tracking service...")
 
     # Validate that all required environment variables are set
-    if not all([SUPABASE_URL, SUPABASE_KEY, DISCORD_WEBHOOK_URL]):
-        logging.error("FATAL: One or more environment variables are not set. Exiting.")
+    if not all([SUPABASE_URL, SUPABASE_KEY]):
+        logging.error("FATAL: SUPABASE_URL or SUPABASE_KEY environment variables not set. Exiting.")
         return
 
     try:

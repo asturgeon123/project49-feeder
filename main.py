@@ -172,8 +172,9 @@ def main():
         aircraft_map = get_all_aircraft(supabase)
         # 1. Refresh the aircraft list from the database if the cache is old
         time_since_last_fetch = time.time() - last_aircraft_fetch_time
+        print("Time since last fetch: ", time_since_last_fetch)
         if time_since_last_fetch > AIRCRAFT_FETCH_INTERVAL:
-            logging.info(f"Aircraft cache is stale (or empty). Refreshing from database...")
+            logging.info("Aircraft cache is stale (or empty). Refreshing from database...")
             aircraft_map = get_all_aircraft(supabase)
             last_aircraft_fetch_time = time.time()
 

@@ -1,4 +1,4 @@
-version: "3"
+
 services:
   project49-feeder-prod:
     image: ghcr.io/asturgeon123/project49-feeder:main

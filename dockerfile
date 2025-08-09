@@ -3,7 +3,6 @@
 
 # Use a slim, official Python base image
 FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 # Set the working directory inside the container
 WORKDIR /app

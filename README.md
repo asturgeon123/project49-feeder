@@ -36,47 +36,14 @@ The application operates in a continuous loop, performing the following steps:
 
 ### Setup
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://your-repository-url/project49-feeder.git
-    cd project49-feeder
-    ```
-
-2.  **Create a `.env` file:**
-    Create a file named `.env` in the root of the project and add the following environment variables:
-
-    ```env
-    SUPABASE_URL=your_supabase_project_url
-    SUPABASE_KEY=your_supabase_service_role_key
-    DISCORD_WEBHOOK_URL=your_discord_webhook_url
-    POLLING_INTERVAL_SECONDS=60
-    AIRCRAFT_FETCH_INTERVAL_SECONDS=300
-    ```
-
-3.  **Supabase Table Setup:**
-    Ensure you have the following tables in your Supabase project:
-
-    *   `aircraft`:
-        *   `id` (uuid, primary key)
-        *   `tail_number` (text, unique)
-        *   ... other aircraft details
-
-    *   `track_point`:
-        *   `id` (bigint, primary key, identity)
-        *   `aircraft_id` (uuid, foreign key to `aircraft.id`)
-        *   `timestamp` (timestamptz)
-        *   `latitude` (float8)
-        *   `longitude` (float8)
-        *   `altitude_msl_ft` (int4)
-        *   `ground_speed_kts` (int4)
-        *   `vertical_speed_fpm` (int4)
-        *   `heading_deg` (int4)
-
-4.  **Build and run the Docker container:**
-    ```bash
-    docker build -t project49-feeder .
-    docker run --env-file .env project49-feeder
-    ```
+Download the docker compose file
+```
+wget -O docker-compose.yml https://raw.githubusercontent.com/asturgeon123/project49-feeder/refs/heads/main/docker-compose.yaml
+```
+Start the containers
+```
+docker compose up -d
+```
 
 ## Health Monitoring and Notifications
 
